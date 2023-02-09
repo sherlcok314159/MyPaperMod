@@ -5,6 +5,13 @@ This is the demo of my improved PaperMod theme. You can visit the introduction: 
 该主题基于PaperMod进行改进，下面是详细配置步骤： 
 
 0. 安装好hugo 
-1. 首先将本仓库clone到本地 
-2. 配置好config.yml 
-3. 在根目录输入hugo server，之后便可在本地端口预览效果了 有问题或者有想PR的feature可以提~
+1. 首先将本仓库clone到本地，然后cd至该目录
+2. 输入git submodule update --init，表示拉取themes/PaperMod/下的子模块，里面放的是原始主题PaperMod
+3. 配置好config.yml 
+4. 在根目录输入hugo server，就会生成`public`文件夹，之后便可在本地端口预览效果了 
+
+若想提交至GitHub仓库，则创建`yourname.github.io`，然后将public文件夹下的所有内容提交即可显示
+
+有问题或者有想PR的feature可以提~
+
+
