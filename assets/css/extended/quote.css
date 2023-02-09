@@ -1,0 +1,32 @@
+blockquote.quote {
+    position: relative;
+    margin: 1em auto;
+    padding-left: 3em;
+    border: none;
+}
+
+blockquote.quote::before{
+    position: absolute;
+    left: 0;
+    content: '“';
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 1;
+}
+
+blockquote.quote-copyright {
+    position: relative;
+    margin: 2em auto;
+    padding-left: 3em;
+    border: none;
+    background-color: aliceblue;
+}
+
+blockquote.quote-copyright::before{
+    position: absolute;
+    left: 0;
+    content: '“';
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 1;
+}

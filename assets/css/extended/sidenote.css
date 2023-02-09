@@ -1,0 +1,41 @@
+.sidenote {
+    display: inline;
+    float: right;
+    position: relative;
+    margin-right: -18vw;
+    width: 40%; 
+    max-width: 200px;
+}
+
+/* Sidenote counter */
+body {
+    counter-reset: sidenote-counter;
+}
+
+.sidenote-number {
+    counter-increment: sidenote-counter;
+}
+
+/* Counter before the sidenote in the margin. */
+.sidenote::before {
+    content: counter(sidenote-counter)". ";
+    position: relative;
+    vertical-align: baseline;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: red
+}
+
+/* Counter in the main body. */
+.sidenote-number::after {
+    content: counter(sidenote-counter);
+    vertical-align: super;
+    font-size: 0.8em;
+    font-weight: bold;
+    color:#409dff 
+}
+
+/* Highlight the sidenote when mouse hovers on the sidenote number in body. */
+.sidenote-number:hover .sidenote {
+    background-color: #e8fcec;
+}

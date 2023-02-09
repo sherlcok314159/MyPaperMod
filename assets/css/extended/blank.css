@@ -1,0 +1,34 @@
+/* For fonts */
+@font-face {
+    font-family: 'LXGWWenKaiScreenR';
+    src: url('/fonts/LXGWWenKaiScreenR.ttf');
+}
+
+/* For better appearance */
+:root {
+    --gap: 24px;
+    --content-gap: 20px;
+    --nav-width: 1024px;
+    --main-width: 720px;
+    --header-height: 60px;
+    --footer-height: 60px;
+    --secondary: rgb(108, 108, 108);
+    --tertiary: rgb(214, 214, 214);
+    --content: rgb(31, 31, 31);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen, Ubuntu, Cantarell, 'LXGWWenKaiScreenR', open sans, helvetica neue, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    word-break: break-word;
+    background: var(--theme)
+}
+
+.active {
+    color: #614a85;
+}
+
+img.active {
+    transform: scale(1.35,1.35)
+}
