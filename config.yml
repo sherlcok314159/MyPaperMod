@@ -1,4 +1,4 @@
-baseURL: "yoursite.com"
+baseURL: "http://yoursite.com"
 title: Demo of Tai's Blog 
 paginate: 8
 theme: PaperMod
@@ -95,7 +95,7 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 
   waline:
-      enable: true
+      enable: false
       serverURL: 
       placeHolder: 
       avatar: 

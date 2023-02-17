@@ -17,7 +17,8 @@ code.hljs {
 */
 .hljs {
   background: #fefefe;
-  color: #545454
+  color: #545454;
+  font-family: 'Consolas', 'LXGWWenKaiScreenR';
 }
 
 .hljs-comment{

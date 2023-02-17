@@ -22,7 +22,8 @@ body {
     font-size: 16px;
     line-height: 1.6;
     word-break: break-word;
-    background: var(--theme)
+    background: var(--theme);
+    font-display: swap
 }
 
 .active {
@@ -31,4 +32,8 @@ body {
 
 img.active {
     transform: scale(1.35,1.35)
+}
+
+code {
+    font-family: 'Consolas', 'LXGWWenKaiScreenR';
 }
