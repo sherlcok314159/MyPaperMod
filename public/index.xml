@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tai&#39;s Blog</title>
+    <link>http://yunpengtai.top/</link>
+    <description>Recent content on Tai&#39;s Blog</description>
+    <image>
+      <title>Tai&#39;s Blog</title>
+      <url>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 24 May 2024 18:10:00 +0800</lastBuildDate><atom:link href="http://yunpengtai.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to prompt LLM better?</title>
+      <link>http://yunpengtai.top/posts/how_to_prompt_llms/</link>
+      <pubDate>Fri, 24 May 2024 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/how_to_prompt_llms/</guid>
+      <description>prompt 在人与 LLM 的互动中起着关键的作用，好的 prompt 可以让 LLM「思考」更多一些，那么如何更好地理解 prompt 的组成，以及设计 prompt 来完成想要的任务便成了主要的目标</description>
+    </item>
+    
+    <item>
+      <title>大模型的数学之路</title>
+      <link>http://yunpengtai.top/posts/llms_math/</link>
+      <pubDate>Wed, 25 Oct 2023 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/llms_math/</guid>
+      <description>问题 LLM 通过大量的语料来建模下一个 token 的概率，这种训练方式促成 LLM 成为一个「文科生」，那么我们不禁对以下几个问题好奇： LLM 目前在数学问题上取得的进展</description>
+    </item>
+    
+    <item>
+      <title>Efficient Tricks for LLMs</title>
+      <link>http://yunpengtai.top/posts/efficient_tricks_for_llms/</link>
+      <pubDate>Fri, 13 Oct 2023 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/efficient_tricks_for_llms/</guid>
+      <description>如何高效训练或推理大模型一般在两点：如何装得下以及如何更快 这里讲一些主要的并行概念，不会深挖原理，只会介绍 key points，看它们分别为加速和</description>
+    </item>
+    
+    <item>
+      <title>放大镜下的 InfoNCE</title>
+      <link>http://yunpengtai.top/posts/infonce/</link>
+      <pubDate>Fri, 14 Jul 2023 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/infonce/</guid>
+      <description>区分真实样本 前面的两种是为了去估计配分函数，接下来要介绍的 InfoNCE 虽然带个 NCE，但这个的目的不是要预估配分函数，他是直接像上篇应用 NCE 的方法一样，</description>
+    </item>
+    
+    <item>
+      <title>NCE 的朋友们</title>
+      <link>http://yunpengtai.top/posts/nce_friends/</link>
+      <pubDate>Sat, 08 Jul 2023 09:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/nce_friends/</guid>
+      <description>在Noise Contrastive Estimation中，我们详细介绍了 NCE 算法，其实还有很多跟它类似的算法，继续以文本生成为例，基于上下文$\boldsymbo</description>
+    </item>
+    
+    <item>
+      <title>Numerical Stability</title>
+      <link>http://yunpengtai.top/posts/numerical_stability/</link>
+      <pubDate>Sun, 25 Jun 2023 21:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/numerical_stability/</guid>
+      <description>Why 当计算涉及到实数域时，比如圆周率的$\pi$，因为小数部分是无穷的，计算机是无法准确表示，因而只会用近似的值进行替代，这种情况下，误差相对</description>
+    </item>
+    
+    <item>
+      <title>Bias Variance Decomposition</title>
+      <link>http://yunpengtai.top/posts/bias_variance_decomposition/</link>
+      <pubDate>Wed, 21 Jun 2023 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/bias_variance_decomposition/</guid>
+      <description>引言 我们规定，训练集记为$\mathcal{D}$，我们从中取一个样本$\boldsymbol{x}$，其训练集标签为$y_{\mathca</description>
+    </item>
+    
+    <item>
+      <title>Noise Contrastive Estimation</title>
+      <link>http://yunpengtai.top/posts/noise_contrastive_estimation/</link>
+      <pubDate>Mon, 29 May 2023 10:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/noise_contrastive_estimation/</guid>
+      <description>难以承受之重 文本生成是 NLP 任务中比较典型的一类，记参数为$\boldsymbol{\theta }$，给定的 context 为$\boldsymbol{c}$</description>
+    </item>
+    
+    <item>
+      <title>Fast Greedy MAP Inference for DPP</title>
+      <link>http://yunpengtai.top/posts/fast_greedy_map_inference_for_dpp/</link>
+      <pubDate>Tue, 16 May 2023 10:20:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/fast_greedy_map_inference_for_dpp/</guid>
+      <description>问题 先规定一些术语：记选中元素构成的集合为$\mathcal{S}$，未选中构成的元素记为$\mathcal{R}$，$\mathbf{L}</description>
+    </item>
+    
+    <item>
+      <title>Determinantal Point Process</title>
+      <link>http://yunpengtai.top/posts/determinantal_point_process/</link>
+      <pubDate>Fri, 21 Apr 2023 15:20:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/determinantal_point_process/</guid>
+      <description>在机器学习中，我们通常会面临一个问题：给定一个集合$\mathbf{S}$，从中寻找$k$个样本构成子集$\mathbf{V}$，尽量使得子</description>
+    </item>
+    
+    <item>
+      <title>Generalized Linear Models</title>
+      <link>http://yunpengtai.top/posts/generalized_linear_models/</link>
+      <pubDate>Fri, 17 Feb 2023 14:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/generalized_linear_models/</guid>
+      <description>定义 若一个分布能够以下述方式进行表示，则称之为指数族（ Exponential Family）的一员 $$ \begin{equation} p(y; \eta ) = b(y)\exp(\eta^{\mathbf{T}}T(y) - a(\eta )) \end{equation} $$ 其中$\eta$被称为分布的自然参数（n</description>
+    </item>
+    
+    <item>
+      <title>Diving in distributed training in PyTorch</title>
+      <link>http://yunpengtai.top/posts/dive_in_distributed_training/</link>
+      <pubDate>Sun, 20 Nov 2022 10:20:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/dive_in_distributed_training/</guid>
+      <description>鉴于网上此类教程有不少模糊不清，对原理不得其法，代码也难跑通，故而花了几天细究了一下相关原理和实现，欢迎批评指正！代码开源在此： DL-Tools Cache effective tools for deep</description>
+    </item>
+    
+    <item>
+      <title>Going Deeper into Back-Propagation</title>
+      <link>http://yunpengtai.top/posts/deep_back_propagation/</link>
+      <pubDate>Wed, 07 Sep 2022 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/deep_back_propagation/</guid>
+      <description>1. Gradient descent optimization Gradient-based methods make use of the gradient information to adjust the parameters. Among them, gradient descent can be the simplest. Gradient descent makes the parameters to walk a small step in the direction of the negative gradient.
+$$ \boldsymbol{w}^{\tau + 1} = \boldsymbol{w}^{\tau} - \eta \nabla_{\boldsymbol{w}^{\tau}} E \tag{1.1} $$
+where $\eta, \tau, E$ label learning rate ($\eta &amp;gt; 0$), the iteration step and the loss function. Wait!</description>
+    </item>
+    
+    <item>
+      <title>Tips for Training Neural Networks</title>
+      <link>http://yunpengtai.top/posts/tips-for-training-nn/</link>
+      <pubDate>Sat, 30 Jul 2022 11:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/tips-for-training-nn/</guid>
+      <description>Recently, I have read a blog about training neural networks (simplified as NN in the rest part of this post) and it is really amazing. I am going to add my own experience in this post along with summarizing that blog&amp;rsquo;s interesting part. Nowadays, it seems like that training NN is extremely easy for there are plenty of free frameworks which are simple to use (e.g. PyTorch, Numpy, Tensorflow). Well,</description>
+    </item>
+    
+    <item>
+      <title>Quotes of Mathematicians</title>
+      <link>http://yunpengtai.top/posts/quotes/</link>
+      <pubDate>Sat, 23 Jul 2022 11:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/quotes/</guid>
+      <description>Life is complex, and it has both real and imaginary parts. — Someone Basically, I’m not interested in doing research and I never have been… I’m interested in understanding, which is quite a different thing. And often to understand something you have to work it out yourself because no one else has done it. — David Blackwell To not know maths is</description>
+    </item>
+    
+    <item>
+      <title>新的主题</title>
+      <link>http://yunpengtai.top/posts/hello-world/</link>
+      <pubDate>Sun, 19 Jun 2022 11:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/hello-world/</guid>
+      <description>该网站所用所有源码均在此仓库，欢迎使用： MyPaperMod This is the demo of my improved PaperMod theme. You can visit the introduction: https://yunpengtai.top/posts/hello-world/ HTML 这是基于 Hugo 系列主题第一篇文章，因为之前是在 Jekyll 上进行渲染，故而 Hello World 也</description>
+    </item>
+    
+    <item>
+      <title>🙋🏻‍♂️About</title>
+      <link>http://yunpengtai.top/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yunpengtai.top/about/</guid>
+      <description>about</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>🤝友人</title>
+      <link>http://yunpengtai.top/friends/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yunpengtai.top/friends/</guid>
+      <description>friends</description>
+    </item>
+    
+  </channel>
+</rss>

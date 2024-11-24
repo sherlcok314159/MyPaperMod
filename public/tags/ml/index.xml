@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ML on Tai&#39;s Blog</title>
+    <link>http://yunpengtai.top/tags/ml/</link>
+    <description>Recent content in ML on Tai&#39;s Blog</description>
+    <image>
+      <title>Tai&#39;s Blog</title>
+      <url>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 14 Jul 2023 18:10:00 +0800</lastBuildDate><atom:link href="http://yunpengtai.top/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>放大镜下的 InfoNCE</title>
+      <link>http://yunpengtai.top/posts/infonce/</link>
+      <pubDate>Fri, 14 Jul 2023 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/infonce/</guid>
+      <description>区分真实样本 前面的两种是为了去估计配分函数，接下来要介绍的 InfoNCE 虽然带个 NCE，但这个的目的不是要预估配分函数，他是直接像上篇应用 NCE 的方法一样，</description>
+    </item>
+    
+    <item>
+      <title>NCE 的朋友们</title>
+      <link>http://yunpengtai.top/posts/nce_friends/</link>
+      <pubDate>Sat, 08 Jul 2023 09:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/nce_friends/</guid>
+      <description>在Noise Contrastive Estimation中，我们详细介绍了 NCE 算法，其实还有很多跟它类似的算法，继续以文本生成为例，基于上下文$\boldsymbo</description>
+    </item>
+    
+    <item>
+      <title>Bias Variance Decomposition</title>
+      <link>http://yunpengtai.top/posts/bias_variance_decomposition/</link>
+      <pubDate>Wed, 21 Jun 2023 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/bias_variance_decomposition/</guid>
+      <description>引言 我们规定，训练集记为$\mathcal{D}$，我们从中取一个样本$\boldsymbol{x}$，其训练集标签为$y_{\mathca</description>
+    </item>
+    
+    <item>
+      <title>Noise Contrastive Estimation</title>
+      <link>http://yunpengtai.top/posts/noise_contrastive_estimation/</link>
+      <pubDate>Mon, 29 May 2023 10:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/noise_contrastive_estimation/</guid>
+      <description>难以承受之重 文本生成是 NLP 任务中比较典型的一类，记参数为$\boldsymbol{\theta }$，给定的 context 为$\boldsymbol{c}$</description>
+    </item>
+    
+    <item>
+      <title>Fast Greedy MAP Inference for DPP</title>
+      <link>http://yunpengtai.top/posts/fast_greedy_map_inference_for_dpp/</link>
+      <pubDate>Tue, 16 May 2023 10:20:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/fast_greedy_map_inference_for_dpp/</guid>
+      <description>问题 先规定一些术语：记选中元素构成的集合为$\mathcal{S}$，未选中构成的元素记为$\mathcal{R}$，$\mathbf{L}</description>
+    </item>
+    
+    <item>
+      <title>Determinantal Point Process</title>
+      <link>http://yunpengtai.top/posts/determinantal_point_process/</link>
+      <pubDate>Fri, 21 Apr 2023 15:20:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/determinantal_point_process/</guid>
+      <description>在机器学习中，我们通常会面临一个问题：给定一个集合$\mathbf{S}$，从中寻找$k$个样本构成子集$\mathbf{V}$，尽量使得子</description>
+    </item>
+    
+  </channel>
+</rss>

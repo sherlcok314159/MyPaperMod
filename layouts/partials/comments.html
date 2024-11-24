@@ -2,8 +2,6 @@
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
 {{- /* Comments area end */ -}}
 
-{{ if .Params.comments }}
-{{ if site.Params.waline.enable }}
-{{- partial "waline.html" .}}
-{{ end }}
+{{ if or .Params.comments .Site.Params.comments }}
+{{- partial "artalk.html" .}}
 {{ end }}

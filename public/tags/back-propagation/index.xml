@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>back-propagation on Tai&#39;s Blog</title>
+    <link>http://yunpengtai.top/tags/back-propagation/</link>
+    <description>Recent content in back-propagation on Tai&#39;s Blog</description>
+    <image>
+      <title>Tai&#39;s Blog</title>
+      <url>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 07 Sep 2022 18:10:00 +0800</lastBuildDate><atom:link href="http://yunpengtai.top/tags/back-propagation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Going Deeper into Back-Propagation</title>
+      <link>http://yunpengtai.top/posts/deep_back_propagation/</link>
+      <pubDate>Wed, 07 Sep 2022 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/deep_back_propagation/</guid>
+      <description>1. Gradient descent optimization Gradient-based methods make use of the gradient information to adjust the parameters. Among them, gradient descent can be the simplest. Gradient descent makes the parameters to walk a small step in the direction of the negative gradient.
+$$ \boldsymbol{w}^{\tau + 1} = \boldsymbol{w}^{\tau} - \eta \nabla_{\boldsymbol{w}^{\tau}} E \tag{1.1} $$
+where $\eta, \tau, E$ label learning rate ($\eta &amp;gt; 0$), the iteration step and the loss function. Wait!</description>
+    </item>
+    
+  </channel>
+</rss>

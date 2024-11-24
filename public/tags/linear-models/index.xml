@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>linear models on Tai&#39;s Blog</title>
+    <link>http://yunpengtai.top/tags/linear-models/</link>
+    <description>Recent content in linear models on Tai&#39;s Blog</description>
+    <image>
+      <title>Tai&#39;s Blog</title>
+      <url>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 17 Feb 2023 14:10:00 +0800</lastBuildDate><atom:link href="http://yunpengtai.top/tags/linear-models/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generalized Linear Models</title>
+      <link>http://yunpengtai.top/posts/generalized_linear_models/</link>
+      <pubDate>Fri, 17 Feb 2023 14:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/generalized_linear_models/</guid>
+      <description>定义 若一个分布能够以下述方式进行表示，则称之为指数族（ Exponential Family）的一员 $$ \begin{equation} p(y; \eta ) = b(y)\exp(\eta^{\mathbf{T}}T(y) - a(\eta )) \end{equation} $$ 其中$\eta$被称为分布的自然参数（n</description>
+    </item>
+    
+  </channel>
+</rss>

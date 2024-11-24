@@ -1,0 +1,25 @@
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/katex@0.16.7/dist/katex.min.css"
+/>
+<script src="https://unpkg.com/katex@0.16.7/dist/katex.min.js"></script>
+
+<link
+  href="https://cdn.jsdelivr.net/gh/sherlcok314159/artalk-assets@main/artalk.css"
+  rel="stylesheet"
+/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.8.6/Artalk.js"></script>
+<script src="https://unpkg.com/@artalk/plugin-katex@latest/dist/artalk-plugin-katex.js"></script>
+
+<div id="Comments"></div>
+<script>
+  const artalk = Artalk.init({
+    el: "#Comments", // 绑定元素的 Selector
+    pageKey: "",
+    pageTitle: "{{ .Title }}",
+    server: "{{ site.Params.artalk.server }}", // 后端地址
+    site: "{{ site.Params.artalk.site }}", // 你的站点名
+  });
+  artalk.setDarkMode("auto");
+</script>

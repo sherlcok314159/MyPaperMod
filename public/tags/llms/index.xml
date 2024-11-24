@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>llms on Tai&#39;s Blog</title>
+    <link>http://yunpengtai.top/tags/llms/</link>
+    <description>Recent content in llms on Tai&#39;s Blog</description>
+    <image>
+      <title>Tai&#39;s Blog</title>
+      <url>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 24 May 2024 18:10:00 +0800</lastBuildDate><atom:link href="http://yunpengtai.top/tags/llms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to prompt LLM better?</title>
+      <link>http://yunpengtai.top/posts/how_to_prompt_llms/</link>
+      <pubDate>Fri, 24 May 2024 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/how_to_prompt_llms/</guid>
+      <description>prompt 在人与 LLM 的互动中起着关键的作用，好的 prompt 可以让 LLM「思考」更多一些，那么如何更好地理解 prompt 的组成，以及设计 prompt 来完成想要的任务便成了主要的目标</description>
+    </item>
+    
+    <item>
+      <title>大模型的数学之路</title>
+      <link>http://yunpengtai.top/posts/llms_math/</link>
+      <pubDate>Wed, 25 Oct 2023 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/llms_math/</guid>
+      <description>问题 LLM 通过大量的语料来建模下一个 token 的概率，这种训练方式促成 LLM 成为一个「文科生」，那么我们不禁对以下几个问题好奇： LLM 目前在数学问题上取得的进展</description>
+    </item>
+    
+    <item>
+      <title>Efficient Tricks for LLMs</title>
+      <link>http://yunpengtai.top/posts/efficient_tricks_for_llms/</link>
+      <pubDate>Fri, 13 Oct 2023 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/efficient_tricks_for_llms/</guid>
+      <description>如何高效训练或推理大模型一般在两点：如何装得下以及如何更快 这里讲一些主要的并行概念，不会深挖原理，只会介绍 key points，看它们分别为加速和</description>
+    </item>
+    
+  </channel>
+</rss>

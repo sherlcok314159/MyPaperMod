@@ -1,0 +1,142 @@
+@font-face {
+  font-family: "LXGWWenKaiScreenR";
+  src: url("/fonts/lxgwwenkaiscreen.subset.v1.235.standard.woff2");
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen,
+    Ubuntu, Cantarell, "LXGWWenKaiScreenR", open sans, helvetica neue,
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-break: break-word;
+  background: var(--theme);
+  font-display: swap;
+}
+
+.active {
+  color: #614a85;
+}
+
+img.active {
+  transform: scale(1.35, 1.35);
+}
+
+code {
+  font-family: "Consolas", "LXGWWenKaiScreenR";
+}
+
+.post-content code {
+  margin: auto 4px;
+  padding: 4px 6px;
+  font-size: 0.8em;
+  line-height: 1.5;
+  background: var(--code-bg);
+}
+
+.post-content pre code {
+  display: block;
+  margin: auto 0;
+  padding: 10px;
+  background: var(--hljs-bg) !important;
+  color: var(--content);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  word-break: break-all;
+  font-family: "Consolas";
+  font-size: 15px;
+}
+
+.post-footer {
+  margin-top: 56px;
+  display: inline;
+  width: 50%;
+}
+
+.first-entry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: var(--gap) 0 calc(var(--gap) * 2);
+}
+.post-tags {
+  padding-top: 0.5em;
+}
+
+.iframe_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  border-collapse: collapse;
+  display: table;
+  margin-bottom: 1rem;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  & thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+  }
+  & td,
+  & th {
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0.75rem;
+  }
+
+  & tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+
+  & tbody tr:nth-of-type(2n + 1) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  & tr:last-of-type {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+  }
+}
+
+.dark table {
+  border-collapse: collapse;
+  display: table;
+  margin-bottom: 1rem;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  & thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid var(--code-bg);
+  }
+  & td,
+  & th {
+    vertical-align: top;
+    border-top: 1px solid var(--code-bg);
+    border-bottom: 1px solid var(--code-bg);
+    padding: 0.75rem;
+  }
+
+  & tbody tr:hover {
+    background-color: var(--code-bg);
+  }
+
+  & tbody tr:nth-of-type(2n + 1) {
+    background-color: var(--code-bg);
+  }
+  & tr:last-of-type {
+    vertical-align: bottom;
+    border-bottom: 2px solid var(--code-bg);
+  }
+}
+
+.first-entry {
+  min-height: 220px;
+  margin: 0;
+}

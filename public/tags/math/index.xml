@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>math on Tai&#39;s Blog</title>
+    <link>http://yunpengtai.top/tags/math/</link>
+    <description>Recent content in math on Tai&#39;s Blog</description>
+    <image>
+      <title>Tai&#39;s Blog</title>
+      <url>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 25 Oct 2023 18:10:00 +0800</lastBuildDate><atom:link href="http://yunpengtai.top/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>大模型的数学之路</title>
+      <link>http://yunpengtai.top/posts/llms_math/</link>
+      <pubDate>Wed, 25 Oct 2023 18:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/llms_math/</guid>
+      <description>问题 LLM 通过大量的语料来建模下一个 token 的概率，这种训练方式促成 LLM 成为一个「文科生」，那么我们不禁对以下几个问题好奇： LLM 目前在数学问题上取得的进展</description>
+    </item>
+    
+  </channel>
+</rss>

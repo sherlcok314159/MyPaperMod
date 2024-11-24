@@ -21,7 +21,6 @@
     display: inline-block !important;
     border-radius: 5px;
     background: none;
-    
     -webkit-transition: all ease-out 0.3s;
     -moz-transition: all ease-out 0.3s;
     -o-transition: all ease-out 0.3s;
@@ -42,7 +41,7 @@
     transform: scale(1.1);
 }
 
-.frienddiv:hover .frienddivleft img { 
+.frienddiv:hover .frienddivleft img {
     transition: 0.9s !important;
     -webkit-transition: 0.9s !important;
     -moz-transition: 0.9s !important;

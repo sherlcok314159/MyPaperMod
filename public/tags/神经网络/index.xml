@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>神经网络 on Tai&#39;s Blog</title>
+    <link>http://yunpengtai.top/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</link>
+    <description>Recent content in 神经网络 on Tai&#39;s Blog</description>
+    <image>
+      <title>Tai&#39;s Blog</title>
+      <url>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://yunpengtai.top/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 30 Jul 2022 11:10:00 +0800</lastBuildDate><atom:link href="http://yunpengtai.top/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tips for Training Neural Networks</title>
+      <link>http://yunpengtai.top/posts/tips-for-training-nn/</link>
+      <pubDate>Sat, 30 Jul 2022 11:10:00 +0800</pubDate>
+      
+      <guid>http://yunpengtai.top/posts/tips-for-training-nn/</guid>
+      <description>Recently, I have read a blog about training neural networks (simplified as NN in the rest part of this post) and it is really amazing. I am going to add my own experience in this post along with summarizing that blog&amp;rsquo;s interesting part. Nowadays, it seems like that training NN is extremely easy for there are plenty of free frameworks which are simple to use (e.g. PyTorch, Numpy, Tensorflow). Well,</description>
+    </item>
+    
+  </channel>
+</rss>

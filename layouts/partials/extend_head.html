@@ -3,7 +3,6 @@
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
 {{- /* Head custom content area end */ -}}
 
-{{- /* For mathematics */ -}}
 {{ if or .Params.math .Site.Params.math }}
 {{- partial "mathjax.html" .}}
 {{ end }}

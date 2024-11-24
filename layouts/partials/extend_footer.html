@@ -2,7 +2,21 @@
 {{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
 {{- /* Footer custom content area end */ -}}
 
-<!-- For writing equations in hugo by wrapping them in code (e.g., `$1$`) -->
+<!-- 自动中英文留有空白「盘古之白」 -->
+{{- $highlight := resources.Get "js/pangu.min.js" }}
+<script>
+    (function(u, c) {
+      var d = document, t = 'script', o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function(e) { c(e); }); }
+      s.parentNode.insertBefore(o, s);
+    })('{{ $highlight.RelPermalink }}', function() {
+      pangu.spacingPage();
+    });
+</script>
+
+<!-- 数学公式通过外面套代码 block：`$equation$` -->
 <script>
 (function() {
   var i, text, code, codes = document.getElementsByTagName('code');
@@ -24,19 +38,4 @@
     i++;
   }
 })();
-</script>
-
-{{ partial "pseudocode.html" . }}
-
-<!-- 自动中英文留有空白「盘古之白」 -->
-<script>
-    (function(u, c) {
-      var d = document, t = 'script', o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function(e) { c(e); }); }
-      s.parentNode.insertBefore(o, s);
-    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
-      pangu.spacingPage();
-    });
 </script>

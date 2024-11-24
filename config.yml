@@ -1,5 +1,5 @@
-baseURL: "http://yoursite.com"
-title: Demo of Tai's Blog 
+baseURL: "http://yunpengtai.top"
+title: Tai's Blog
 paginate: 8
 theme: PaperMod
 
@@ -9,7 +9,7 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-googleAnalytics: 
+googleAnalytics: G-Y3CX2RWEDY
 
 minify:
   disableXML: true
@@ -17,14 +17,14 @@ minify:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: ExampleSite
-  description: "ExampleSite description"
+  title: Tai's Blog
+  description: "I blog to think about interesting things."
   keywords: [Blog, Portfolio, PaperMod]
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
-  defaultTheme: light # dark, light
-  disableThemeToggle: true 
+  defaultTheme: dark # dark, light
+  disableThemeToggle: false
 
   ShowLastMod: true
   ShowCopyRight: true
@@ -39,6 +39,7 @@ params:
   disableSpecial1stPost: false
   disableScrollToTop: false
   comments: true
+  math: false
   hidemeta: false
   hideSummary: false
   showtoc: true
@@ -60,26 +61,30 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
-    Content: Hi, this is the demo of Yunpeng Tai's blog. Find fun!
+    Content: Hi, this is Yunpeng Tai. I blog to think about interesting things.
 
   socialIcons:
+    - name: RSS
+      url: /index.xml
     - name: twitter
-      url: 
+      url: https://twitter.com/TonySta14611077
     - name: github
-      url: 
-    - name: Kofi 
-      url: 
+      url: https://github.com/sherlcok314159
+    - name: Kofi
+      url: https://yunpengtai.top/sponsor
     - name: email
-      url: 
+      url: mailto:yunpengtai.typ@gmail.com
     - name: wechat
-      url: 
+      url: https://png.yunpengtai.top/2024/11/44eafaf1cd8a40604ef2b5cf593794c4.png
+    - name: telegram
+      url: https://t.me/hufi_gnu
 
   analytics:
     google:
-      SiteVerificationTag: 
+      SiteVerificationTag: eAKh7zszsOtNde1wyq_sUo95ZPH4zTTJhR-_ol4VWDs
 
   editPost:
-    URL: 
+    URL:
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
@@ -93,33 +98,31 @@ params:
     threshold: 0.4
     minMatchCharLength: 0
     keys: ["title", "permalink", "summary", "content"]
+  artalk:
+    server: "https://comment.yunpengtai.top"
+    site: "Tai's Blog"
 
-  waline:
-      enable: false
-      serverURL: 
-      placeHolder: 
-      avatar: 
 
 menu:
   main:
     - identifier: archive
-      name: Archive
+      name: 归档
       url: /archives/
       weight: 5
-    - identifier: search 
-      name: Search 
+    - identifier: search
+      name: 搜索
       url: /search/
       weight: 6
     - identifier: tags
-      name: Tags
+      name: 标签
       url: /tags/
       weight: 20
     - identifier: friends
-      name: Friends
+      name: 友人
       url: /friends/
       weight: 22
     - identifier: about
-      name: About
+      name: 关于
       url: /about/
       weight: 30
 
