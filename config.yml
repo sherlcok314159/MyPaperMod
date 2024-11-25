@@ -1,0 +1,147 @@
+baseURL: "http://yoursite.com"
+title: Test
+paginate: 8
+theme: PaperMod
+
+enableRobotsTXT: true
+enableInlineShortcodes: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+googleAnalytics: 
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: Tai's Blog
+  description: "I blog to think about interesting things."
+  keywords: [Blog, Portfolio, PaperMod]
+  # author: ["Me", "You"] # multiple authors
+  images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: dark # dark, light
+  disableThemeToggle: false
+
+  ShowLastMod: true
+  ShowCopyRight: true
+  ShowReadingTime: false
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: true
+  math: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: true
+  tocopen: true
+
+  assets:
+    disableFingerprinting: true
+    favicon: "/favicon.ico"
+    favicon16x16: "/favicon-16x16.png"
+    favicon32x32: "/favicon-32x32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
+    safari_pinned_tab: "<link / abs url>"
+
+  label:
+    text: "Home"
+    # icon: /apple-touch-icon.png
+    iconHeight: 35
+
+  # home-info mode
+  homeInfoParams:
+    Title: "Hi there \U0001F44B"
+    Content: Hi, this is the demo of Yunpeng Tai's site.
+
+  socialIcons:
+    - name: RSS
+      url: /index.xml
+    - name: twitter
+      url: 
+    - name: github
+      url: 
+    - name: Kofi
+      url: 
+    - name: email
+      url: 
+    - name: wechat
+      url: 
+    - name: telegram
+      url: 
+
+  analytics:
+    google:
+      SiteVerificationTag: 
+
+  editPost:
+    URL:
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+  artalk:
+    server: 
+    site: 
+
+menu:
+  main:
+    - identifier: archive
+      name: 归档
+      url: /archives/
+      weight: 5
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 6
+    - identifier: tags
+      name: 标签
+      url: /tags/
+      weight: 20
+    - identifier: friends
+      name: 友人
+      url: /friends/
+      weight: 22
+    - identifier: about
+      name: 关于
+      url: /about/
+      weight: 30
+
+# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
+  highlight:
+    disableHLJS: true # to disable highlight.js
+    # anchorLineNos: true
+    codeFences: true
+    guessSyntax: true
+    noClasses: false
+    pygmentsUseClasses: true
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
+
+hasCJKLanguage: true

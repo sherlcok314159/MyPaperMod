@@ -1,0 +1,10 @@
+<div class="github">
+    <div class="github_bar">
+        {{ replace $.Site.Data.SVG.repository "icon" "icon github-icon" | safeHTML }}
+        <a class="github_name" href={{ .Get "link" }} target="_blank">{{ .Get "name" }}</a>
+    </div>
+    <div class="github_description">{{ .Get "description" }}</div>
+    <div class="github_language">
+        {{ .Get "language" }}
+    </div>
+</div>

@@ -1,0 +1,39 @@
+.github {
+  border: 0px solid;
+  border-radius: 5px;
+  width: 95%;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding: 1em;
+  background-color: var(--code-bg);
+  .github_bar {
+    margin-top: -0.6em;
+    margin-left: 0;
+  }
+  .github_name {
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 24px;
+    position: relative;
+    top: -0.6em;
+    left: 0.3em;
+  }
+  .github_description {
+    margin-top: -0.3em;
+    margin-bottom: 1em;
+    color: var(--color-contrast-high);
+    text-align: justify;
+    font-size: 90%;
+    width: 95%;
+    transition: all 0.5s;
+  }
+  .github_language {
+    margin-top: -0.6em;
+  }
+  .github_language_name {
+    color: var(--color-contrast-high);
+    font-size: 90%;
+    margin-left: 0.5em;
+    transition: all 0.5s;
+  }
+}

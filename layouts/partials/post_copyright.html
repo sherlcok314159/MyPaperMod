@@ -1,0 +1,39 @@
+{{ $date := .Date }} {{ $year := $date | dateFormat "2006" }} {{ $monthEnglish
+:= $date | dateFormat "Jan" }}
+
+<div
+  style="
+    margin-top: 2em;
+    padding: 1em;
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: var(--code-bg);
+  "
+>
+  <h3>🐱如果您想要引用，请考虑如下格式：</h3>
+  <div style="padding-top: 0.5em">
+    台运鹏. ({{ .Date | dateFormat "Jan. 2, 2006" }}). 《{{ .Title }}》[Blog
+    post]. Retrieved from {{ .Permalink }}
+  </div>
+  <div class="highlight">
+    <pre
+      tabindex="0"
+      class="chroma"
+    ><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@online{blog-{{ .File.UniqueID }},
+</span></span><span class="line"><span class="cl">        title={{ .Title }},
+</span></span><span class="line"><span class="cl">        author={Yunpeng Tai},
+</span></span><span class="line"><span class="cl">        year={{ $year }},
+</span></span><span class="line"><span class="cl">        month={{ $monthEnglish }},
+</span></span><span class="line"><span class="cl">        url={{ .Permalink }},
+</span></span><span class="line"><span class="cl">        note=yunpengtai.typ@gmail.com,
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre>
+  </div>
+  <div style="padding-bottom: 0.4em;">
+    自由转载-非商用-非衍生-保持署名（<a
+      href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+      target="_blank"
+      >CC BY-NC-SA 4.0）</a
+    >
+  </div>
+</div>

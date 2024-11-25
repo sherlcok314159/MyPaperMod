@@ -1,0 +1,30 @@
+.sidenote {
+  float: right;
+  position: relative;
+  margin-right: -18vw;
+  width: 40%;
+  max-width: 200px;
+}
+body {
+  counter-reset: sidenote-counter;
+}
+.sidenote-number {
+  counter-increment: sidenote-counter;
+}
+.sidenote::before {
+  content: "# ";
+  position: relative;
+  font-size: 0.9em;
+  font-weight: 700;
+  color: red;
+}
+.sidenote-number::after {
+  content: "#";
+  vertical-align: super;
+  font-size: 0.8em;
+  font-weight: 700;
+  color: #409dff;
+}
+.sidenote-number:hover .sidenote {
+  background-color: var(--sidenote-bg);
+}
