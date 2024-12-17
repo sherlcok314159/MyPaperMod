@@ -13,6 +13,7 @@
     server: "{{ site.Params.artalk.server }}", // 后端地址
     site: "{{ site.Params.artalk.site }}", // 你的站点名
     darkMode: "auto",
+    versionCheck: false,
   });
   document.getElementById("theme-toggle").addEventListener("click", () => {
     document.body.className.includes("dark")

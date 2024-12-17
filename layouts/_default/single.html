@@ -18,6 +18,27 @@
       {{- partial "translation_list.html" . -}}
       {{- partial "edit_post.html" . -}}
       {{- partial "post_canonical.html" . -}}
+      <!-- 在元数据中显示分类信息 -->
+      {{- $categories := .Language.Params.Taxonomies.category | default "categories"}}
+      <!-- 统计分类个数 -->
+      {{- $cnt := 0 }}
+      {{- range ($.GetTerms $categories) }}
+        {{- $cnt = add $cnt 1 }}
+      {{- end }}
+      <!-- 只有文章有分类信息时才显示 -->
+      {{- if gt $cnt 0 }}
+        {{- $i := 0 }}
+        <div class="meta-item">&nbsp·&nbsp
+            {{- range ($.GetTerms $categories) }}
+                <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+                {{ $i = add $i 1 }}
+                <!-- 不是最后一个类别时，添加逗号分割类别 -->
+                {{- if lt $i $cnt}}
+                    <span>,</span>
+                {{- end }}
+            {{- end }}
+        </div>
+      {{- end }}
     </div>
     {{- end }}
   </header>

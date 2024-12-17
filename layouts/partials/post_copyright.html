@@ -20,12 +20,11 @@
       tabindex="0"
       class="chroma"
     ><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@online{blog-{{ .File.UniqueID }},
-</span></span><span class="line"><span class="cl">        title={{ .Title }},
+</span></span><span class="line"><span class="cl">        title={{ printf "{%v}" .Title }},
 </span></span><span class="line"><span class="cl">        author={Yunpeng Tai},
-</span></span><span class="line"><span class="cl">        year={{ $year }},
-</span></span><span class="line"><span class="cl">        month={{ $monthEnglish }},
-</span></span><span class="line"><span class="cl">        url={{ .Permalink }},
-</span></span><span class="line"><span class="cl">        note=yunpengtai.typ@gmail.com,
+</span></span><span class="line"><span class="cl">        year={{ printf "{%v}" $year }},
+</span></span><span class="line"><span class="cl">        month={{ printf "{%v}" $monthEnglish }},
+</span></span><span class="line"><span class="cl">        note={{ printf "{%v}" .Permalink }},
 </span></span><span class="line"><span class="cl">}
 </span></span></code></pre>
   </div>

@@ -1,0 +1,24 @@
+code {
+  font-family: "Consolas", "LXGWWenKaiScreenR";
+}
+
+.post-content code {
+  margin: auto 4px;
+  padding: 4px 6px;
+  font-size: 0.8em;
+  line-height: 1.5;
+  background: var(--code-bg);
+}
+
+.post-content pre code {
+  display: block;
+  margin: auto 0;
+  padding: 10px;
+  background: var(--hljs-bg) !important;
+  color: var(--content);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  word-break: break-all;
+  font-family: "Consolas";
+  font-size: 15px;
+}
