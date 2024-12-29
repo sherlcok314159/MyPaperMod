@@ -18,6 +18,8 @@ UseHugoToc: true
 
 {{< github name="MyPaperMod" link="https://github.com/sherlcok314159/MyPaperMod" description="This is the demo of my improved PaperMod theme. You can visit the introduction: https://yunpengtai.top/posts/hello-world/" language="HTML" >}}
 
+关于本文涉及的一些用法示例，可以参见本篇文章的[源码](https://github.com/sherlcok314159/MyPaperMod/blob/main/content/posts/hugo-journey.md)
+
 ## 基础知识
 
 这里主要介绍 Hugo 主题相关的基础知识，比如文件夹代表的意思，我使用的 Hugo 版本以及常用命令等，有基础的读者应直接跳至下一节进行阅读
@@ -239,6 +241,8 @@ $$`
 ```
 {{< /collapse >}}
 
+另外，关于停用版本检测，不仅要设置前端的参数，后端的参数也需要设置为 false，具体即为 render 上的 conf.yaml
+
 接着在同级目录中创建 comments.html 来引用即可：
 
 ```go
@@ -456,6 +460,103 @@ table {
 ## 更便于阅读
 
 这一节主要讲博客为了更方便读者阅读做出的努力
+
+### Mermaid 图
+
+Mermaid js 可以可以让我们用代码的方式画流程图，在文章的概念比较多或者关系复杂时，流程图就可以让读者更容易看懂，故而也引入了 mermaid 的实现
+
+首先创建 `layouts/_default/_markup/render-codeblock-mermaid.html`，写入以下内容：
+
+```html
+<!-- 因为正常写会有 ```meraid ... ``` -->
+<pre class="mermaid">
+   {{- .Inner | htmlEscape | safeHTML }}
+</pre>
+{{ .Page.Store.Set "hasMermaid" true }}
+```
+
+这样就可以将 mermaid 这种特殊的 codeblock 加入渲染机制里，同时设置 hasMermaid 为 true，方便后面判断是否加载 mermaid js。接着我们创建 `layouts/partials/mermaid.html`，来让 mermaid js 对我们写的代码进行渲染，同时支持亮暗自动切换，取自于 [mermaid-js](https://github.com/mermaid-js/mermaid/issues/1945)社区的讨论
+
+{{< collapse summary="mermaid.html 文件" >}}
+```html
+{{ if .Page.Store.Get "hasMermaid" }}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+    const elementCode = '.mermaid'
+    const loadMermaid = function(theme) {
+        mermaid.initialize({theme})
+        mermaid.init({theme}, document.querySelectorAll(elementCode))
+    }
+    const saveOriginalData = function(){
+        return new Promise((resolve, reject) => {
+            try {
+                var els = document.querySelectorAll(elementCode),
+                    count = els.length;
+                els.forEach(element => {
+                    element.setAttribute('data-original-code', element.innerHTML)
+                    count--
+                    if(count == 0){
+                        resolve()
+                    }
+                });
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }
+    const resetProcessed = function(){
+        return new Promise((resolve, reject) => {
+            try {
+                var els = document.querySelectorAll(elementCode),
+                    count = els.length;
+                els.forEach(element => {
+                    if(element.getAttribute('data-original-code') != null){
+                        element.removeAttribute('data-processed')
+                        element.innerHTML = element.getAttribute('data-original-code')
+                    }
+                    count--
+                    if(count == 0){
+                        resolve()
+                    }
+                });
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }
+
+    saveOriginalData()
+        .catch( console.error )
+    let statusTheme = localStorage.getItem("pref-theme")
+        if (statusTheme == 'dark') {
+            resetProcessed()
+                .then(loadMermaid('dark'))
+                .catch(console.error)
+        }
+        if (statusTheme == 'light') {
+            resetProcessed()
+                .then(loadMermaid('neutral'))
+                .catch(console.error)
+        }
+       document.getElementById("theme-toggle").addEventListener("click",()=>{
+        resetProcessed()
+            .then(loadMermaid(mermaid.mermaidAPI.getConfig().theme == 'neutral' ? 'dark' : 'neutral'))
+            .catch(console.error)
+
+    })
+</script>
+{{ end }}
+```
+{{< /collapse >}}
+
+最后再在 `layouts/_default/single.html` 中加入引用 mermaid.html 的部分，注意，single.html 你如果一开始没有，需要先去主题 `themes/PaperMod/layouts/_default/single.html` 那里拷贝原来的 single.html 到上面这个地址
+
+```html
+<article>
+  <!-- 省略上面的 -->
+  {{- partial "mermaid.html" . }}
+</article>
+```
 
 ### 侧边悬浮目录
 
@@ -781,6 +882,41 @@ menu:
       url: /categories/折腾
       weight: 20
 ```
+
+接着再寻找到 `layouts/_default/single.html` 中的 `post-meta` 类，在里面加入代码来让文章的元信息栏（显示时间，有多少词的地方）显示分类
+
+{{< collapse summary="修改 single.html 加入分类信息" >}}
+```html
+    <div class="post-meta">
+      {{- partial "post_meta.html" . -}}
+      {{- partial "translation_list.html" . -}}
+      {{- partial "edit_post.html" . -}}
+      {{- partial "post_canonical.html" . -}}
+      <!-- 在元数据中显示分类信息 -->
+      {{- $categories := .Language.Params.Taxonomies.category | default "categories"}}
+      <!-- 统计分类个数 -->
+      {{- $cnt := 0 }}
+      {{- range ($.GetTerms $categories) }}
+        {{- $cnt = add $cnt 1 }}
+      {{- end }}
+      <!-- 只有文章有分类信息时才显示 -->
+      {{- if gt $cnt 0 }}
+        {{- $i := 0 }}
+        <div class="meta-item">&nbsp·&nbsp
+            {{- range ($.GetTerms $categories) }}
+                <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+                {{ $i = add $i 1 }}
+                <!-- 不是最后一个类别时，添加逗号分割类别 -->
+                {{- if lt $i $cnt}}
+                    <span>,</span>
+                {{- end }}
+            {{- end }}
+        </div>
+      {{- end }}
+    </div>
+    {{- end }}
+```
+{{< /collapse >}}
 
 ## Shortcodes 大赏
 
