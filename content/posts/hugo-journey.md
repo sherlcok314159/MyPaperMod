@@ -128,26 +128,29 @@ $$
 {{< collapse summary="去掉数学公式的代码框 js" >}}
 ```js
 <script>
-(function() {
-  var i, text, code, codes = document.getElementsByTagName('code');
-  for (i = 0; i < codes.length;) {
-    code = codes[i];
-    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
-      text = code.textContent;
-      if (/^\`$[^$`]/.test(text) && /[^`$]\$``$/.test(text)) {$`
-        text = text.replace(/^\`$/, '\\(').replace(/\$``$/, '\\)');$`
-        code.textContent = text;
+  (function () {
+    var i, text, code, codes = document.getElementsByTagName("code");
+    for (i = 0; i < codes.length; ) {
+      code = codes[i];
+      if (code.parentNode.tagName !== "PRE" && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, "\\(").replace(/\$$/, "\\)");
+          code.textContent = text;
+        }
+        if (
+          /^\\\((.|\s)+\\\)$/.test(text) ||
+          /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$(.|\s)+\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)
+        ) {
+          code.outerHTML = code.innerHTML; // remove <code></code>
+          continue;
+        }
       }
-      if (/^\\\((.|\s)+\\\)`$/.test(text) || /^\\\[(.|\s)+\\\]$`/.test(text) ||
-          /^\`$(.|\s)+\$``$/.test(text) ||$`
-          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}`$/.test(text)) {$`
-        code.outerHTML = code.innerHTML;  // remove <code></code>
-        continue;
-      }
+      i++;
     }
-    i++;
-  }
-})();
+  })();
 </script>
 ```
 {{< /collapse >}}
@@ -215,7 +218,10 @@ $$`
 
 {{< collapse summary="artalk.html" >}}
 ```html
-<link rel="stylesheet" href="https://unpkg.com/katex@0.16.7/dist/katex.min.css"/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/katex@0.16.7/dist/katex.min.css"
+/>
 <script src="https://unpkg.com/katex@0.16.7/dist/katex.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.8.6/Artalk.js"></script>
@@ -230,7 +236,7 @@ $$`
     server: "{{ site.Params.artalk.server }}", // 后端地址
     site: "{{ site.Params.artalk.site }}", // 你的站点名
     darkMode: "auto", // 首次打开时自动亮暗模式
-    versionCheck: false, // 不提醒需要更新
+    versionCheck: false,  // 不提醒需要更新，还需要后端也设置，后端 > 前端
   });
   document.getElementById("theme-toggle").addEventListener("click", () => {
     document.body.className.includes("dark")
@@ -463,7 +469,30 @@ table {
 
 ### Mermaid 图
 
-Mermaid js 可以可以让我们用代码的方式画流程图，在文章的概念比较多或者关系复杂时，流程图就可以让读者更容易看懂，故而也引入了 mermaid 的实现
+```mermaid
+flowchart TB
+  Start[客户端发起请求] --> fake[fake-ip 反查]
+  fake[fake-ip 反查] --> Domain[基于域名匹配规则]
+  fake --> |fakeip-filter|system[系统解析 DNS]
+
+  Domain --> |匹配过程中|IP[遇到 IP 规则]
+  Domain --> reject[匹配到 Reject 规则]
+  Domain --> |匹配到直连规则|Cache
+  IP --> Cache
+
+  Domain --> |匹配到代理规则|Remote[通过代理服务器解析域名并建立连接]
+
+  Cache --> |Cache 未命中|NS[匹配 nameserver-policy 并查询 ]
+  Cache --> |Cache 命中|Get
+
+  NS --> |匹配成功| Get[将查询到的 IP 用于匹配 IP 规则]
+  NS --> |没匹配到| NF[nameserver/fallback 并发查询]
+
+  NF --> Get[查询得到 IP]
+  Get --> |缓存 DNS 结果|Cache[(查询 DNS 缓存)]
+```
+
+Mermaid js 可以可以让我们用代码的方式画流程图（如上图），在文章的概念比较多或者关系复杂时，流程图就可以让读者更容易看懂，故而也引入了 mermaid 的实现
 
 首先创建 `layouts/_default/_markup/render-codeblock-mermaid.html`，写入以下内容：
 
@@ -475,75 +504,72 @@ Mermaid js 可以可以让我们用代码的方式画流程图，在文章的概
 {{ .Page.Store.Set "hasMermaid" true }}
 ```
 
-这样就可以将 mermaid 这种特殊的 codeblock 加入渲染机制里，同时设置 hasMermaid 为 true，方便后面判断是否加载 mermaid js。接着我们创建 `layouts/partials/mermaid.html`，来让 mermaid js 对我们写的代码进行渲染，同时支持亮暗自动切换，取自于 [mermaid-js](https://github.com/mermaid-js/mermaid/issues/1945)社区的讨论
+这样就可以将 mermaid 这种特殊的 codeblock 加入渲染机制里，同时设置 hasMermaid 为 true，方便后面判断是否加载 mermaid js。接着我们创建 `layouts/partials/mermaid.html`，来让 mermaid js 对我们写的代码进行渲染
+
+同时支持亮暗自动切换，大部分代码片段取自于 [mermaid-js](https://github.com/mermaid-js/mermaid/issues/1945)社区的讨论，然而默认的代码是初次渲染是查看 localStorage 是否包含 pref-theme，很多时候用户并未手动点击切换是不会有这个值，即为 null。我这里是判断 `document.body.className` 是否包含 dark 来判断，更为准确
 
 {{< collapse summary="mermaid.html 文件" >}}
 ```html
 {{ if .Page.Store.Get "hasMermaid" }}
 <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 <script>
-    const elementCode = '.mermaid'
-    const loadMermaid = function(theme) {
-        mermaid.initialize({theme})
-        mermaid.init({theme}, document.querySelectorAll(elementCode))
-    }
-    const saveOriginalData = function(){
-        return new Promise((resolve, reject) => {
-            try {
-                var els = document.querySelectorAll(elementCode),
-                    count = els.length;
-                els.forEach(element => {
-                    element.setAttribute('data-original-code', element.innerHTML)
-                    count--
-                    if(count == 0){
-                        resolve()
-                    }
-                });
-            } catch (error) {
-                reject(error)
-            }
-        })
-    }
-    const resetProcessed = function(){
-        return new Promise((resolve, reject) => {
-            try {
-                var els = document.querySelectorAll(elementCode),
-                    count = els.length;
-                els.forEach(element => {
-                    if(element.getAttribute('data-original-code') != null){
-                        element.removeAttribute('data-processed')
-                        element.innerHTML = element.getAttribute('data-original-code')
-                    }
-                    count--
-                    if(count == 0){
-                        resolve()
-                    }
-                });
-            } catch (error) {
-                reject(error)
-            }
-        })
-    }
+  const elementCode = ".mermaid";
+  const loadMermaid = function (theme) {
+    mermaid.initialize({ theme });
+    mermaid.init({ theme }, document.querySelectorAll(elementCode));
+  };
+  const saveOriginalData = function () {
+    return new Promise((resolve, reject) => {
+      try {
+        var els = document.querySelectorAll(elementCode),
+          count = els.length;
+        els.forEach((element) => {
+          element.setAttribute("data-original-code", element.innerHTML);
+          count--;
+          if (count == 0) {
+            resolve();
+          }
+        });
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };
+  const resetProcessed = function () {
+    return new Promise((resolve, reject) => {
+      try {
+        var els = document.querySelectorAll(elementCode),
+          count = els.length;
+        els.forEach((element) => {
+          if (element.getAttribute("data-original-code") != null) {
+            element.removeAttribute("data-processed");
+            element.innerHTML = element.getAttribute("data-original-code");
+          }
+          count--;
+          if (count == 0) {
+            resolve();
+          }
+        });
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };
 
-    saveOriginalData()
-        .catch( console.error )
-    let statusTheme = localStorage.getItem("pref-theme")
-        if (statusTheme == 'dark') {
-            resetProcessed()
-                .then(loadMermaid('dark'))
-                .catch(console.error)
-        }
-        if (statusTheme == 'light') {
-            resetProcessed()
-                .then(loadMermaid('neutral'))
-                .catch(console.error)
-        }
-       document.getElementById("theme-toggle").addEventListener("click",()=>{
-        resetProcessed()
-            .then(loadMermaid(mermaid.mermaidAPI.getConfig().theme == 'neutral' ? 'dark' : 'neutral'))
-            .catch(console.error)
-
-    })
+  saveOriginalData().catch(console.error);
+  // 不要用 localStorage.getItem("pref-theme")，因为有些时候会为 null
+  let isdark = document.body.className.includes("dark");
+  if (isdark) {
+    resetProcessed().then(loadMermaid("dark")).catch(console.error);
+  } else {
+    resetProcessed().then(loadMermaid("neutral")).catch(console.error);
+  }
+  document.getElementById("theme-toggle").addEventListener("click", () => {
+    resetProcessed();
+    document.body.className.includes("dark")
+      ? loadMermaid("neutral")
+      : loadMermaid("dark").catch(console.error);
+  });
 </script>
 {{ end }}
 ```
@@ -806,15 +832,21 @@ body {
 ```html
 {{- `$highlight := resources.Get "js/pangu.min.js" }}$`
 <script>
-    (function(u, c) {
-      var d = document, t = 'script', o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function(e) { c(e); }); }
-      s.parentNode.insertBefore(o, s);
-    })('{{ `$highlight.RelPermalink }}', function() {$`
-      pangu.spacingPage();
-    });
+  (function (u, c) {
+    var d = document,
+      t = "script",
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener("load", function (e) {
+        c(e);
+      });
+    }
+    s.parentNode.insertBefore(o, s);
+  })("{{ $highlight.RelPermalink }}", function () {
+    pangu.spacingPage();
+  });
 </script>
 ```
 {{< /collapse >}}
@@ -1080,6 +1112,44 @@ Basically, I’m not interested in doing research and I never have been… I’m
 ```
 {{< /collapse >}}
 
+然后创建 assets/css/extended/quote.css 并加入以下内容
+
+{{< collapse summary="Blockquote 的 css 配置" >}}
+```css
+blockquote.quote {
+  position: relative;
+  margin: 1em auto;
+  padding-left: 3em;
+  border: none;
+}
+
+blockquote.quote::before {
+  position: absolute;
+  left: 0;
+  content: "“";
+  font-size: 3em;
+  font-weight: bold;
+  line-height: 1;
+}
+
+blockquote.quote-copyright {
+  position: relative;
+  margin: 2em auto;
+  padding-left: 3em;
+  border: none;
+  background-color: aliceblue;
+}
+
+blockquote.quote-copyright::before {
+  position: absolute;
+  left: 0;
+  content: "“";
+  font-size: 3em;
+  font-weight: bold;
+  line-height: 1;
+}
+```
+{{< /collapse >}}
 
 ### Github 小卡片
 

@@ -401,8 +401,10 @@ img[atk-emoticon] {
 .atk-comment .atk-height-limit-scroll {
   margin-top: 10px;
   overflow-y: auto;
-  background:
-    linear-gradient(var(--at-color-bg) 1px, transparent 1px calc(100% - 1px))
+  background: linear-gradient(
+        var(--at-color-bg) 1px,
+        transparent 1px calc(100% - 1px)
+      )
       center top,
     linear-gradient(
         transparent calc(100% - 1px),
@@ -421,11 +423,7 @@ img[atk-emoticon] {
       center bottom;
   background-repeat: no-repeat;
   background-color: transparent;
-  background-size:
-    100% 1px,
-    100% 1px,
-    100% 1px,
-    100% 1px;
+  background-size: 100% 1px, 100% 1px, 100% 1px, 100% 1px;
   background-attachment: local, local, scroll, scroll;
 }
 
@@ -1116,12 +1114,7 @@ img[atk-emoticon] {
 
 .artalk code,
 .atk-layer-wrap code {
-  font-family:
-    source code pro,
-    Consolas,
-    Monaco,
-    Menlo,
-    sans-serif;
+  font-family: source code pro, Consolas, Monaco, Menlo, sans-serif;
   margin: 0 0.05em;
   padding: 0 0.4em;
   display: inline-block;
@@ -1152,12 +1145,7 @@ img[atk-emoticon] {
 
 .artalk pre code *,
 .atk-layer-wrap pre code * {
-  font-family:
-    source code pro,
-    Consolas,
-    Monaco,
-    Menlo,
-    sans-serif;
+  font-family: source code pro, Consolas, Monaco, Menlo, sans-serif;
 }
 
 .artalk a,
@@ -1281,9 +1269,7 @@ img[atk-emoticon] {
 .atk-loading-spinner svg circle {
   stroke-dasharray: 1, 200;
   stroke-dashoffset: 0;
-  animation:
-    atkDash 1.5s ease-in-out infinite,
-    atkColor 6s ease-in-out infinite;
+  animation: atkDash 1.5s ease-in-out infinite, atkColor 6s ease-in-out infinite;
   stroke-linecap: round;
 }
 

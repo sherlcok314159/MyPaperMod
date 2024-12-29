@@ -1,17 +1,17 @@
-  .cat-divider {
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-  }
+.cat-divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
 
-  .cat-divider hr {
-    flex-grow: 1;
-    border: 0;
-    height: 1px;
-    background-color: #999;
-  }
+.cat-divider hr {
+  flex-grow: 1;
+  border: 0;
+  height: 1px;
+  background-color: #999;
+}
 
-  .cat-divider .cat {
-    padding: 0 10px;
-    font-size: 24px;
-  }
+.cat-divider .cat {
+  padding: 0 10px;
+  font-size: 24px;
+}
