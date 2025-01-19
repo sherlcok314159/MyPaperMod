@@ -4,9 +4,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen,
-    Ubuntu, Cantarell, "LXGWWenKaiScreenR", open sans, helvetica neue,
-    sans-serif;
+  font-family: "LXGWWenKaiScreenR", -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen,
+    Ubuntu, Cantarell, open sans, helvetica neue, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   word-break: break-word;
