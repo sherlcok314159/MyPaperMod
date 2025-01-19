@@ -1112,9 +1112,10 @@ img[atk-emoticon] {
   font-size: inherit;
 }
 
+/* artalk 代码相关的字体与正文对齐 */
 .artalk code,
 .atk-layer-wrap code {
-  font-family: source code pro, Consolas, Monaco, Menlo, sans-serif;
+  font-family: "Consolas", "LXGWWenKaiScreenR";
   margin: 0 0.05em;
   padding: 0 0.4em;
   display: inline-block;
@@ -1145,7 +1146,7 @@ img[atk-emoticon] {
 
 .artalk pre code *,
 .atk-layer-wrap pre code * {
-  font-family: source code pro, Consolas, Monaco, Menlo, sans-serif;
+  font-family: "Consolas", "LXGWWenKaiScreenR";
 }
 
 .artalk a,

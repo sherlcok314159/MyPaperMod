@@ -4,7 +4,11 @@
   const elementCode = ".mermaid";
   const loadMermaid = function (theme) {
     mermaid.initialize({ theme });
-    mermaid.init({ theme }, document.querySelectorAll(elementCode));
+    mermaid.init({
+      theme,
+      themeVariables: {
+        fontFamily: ["SFProText-Regular", "LXGWWenKaiScreenR"] // 这里设置字体跟正文一致
+      }}, document.querySelectorAll(elementCode));
   };
   const saveOriginalData = function () {
     return new Promise((resolve, reject) => {

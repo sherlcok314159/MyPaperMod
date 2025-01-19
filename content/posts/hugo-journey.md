@@ -1,6 +1,7 @@
 ---
 title: Hugo PaperMod 主题精装修
-date: 2024-12-17 17:00:00 +0800
+date: 2024-12-17 22:00:00 +0800
+lastmod: 2025-01-19 20:00:00 +0800
 tags: [网站, 折腾, 主题, 自定义]
 categories: [折腾]
 hiddenInHomeList: true
@@ -62,7 +63,13 @@ BTW，如果想在文章中引用博客内容，可以省去域名`[hello-world]
 
 另外，Hugo 新手可能不知道 shortcodes 是啥意思，可以理解为一种快捷指令，具体的意思也可去 [Hugo 官网](https://hugo.opendocs.io/) 查看
 
-config.yaml 里面可以放置全局参数以及 menu 等信息，根据你所使用的主题文档进行修改即可，这里不加以讨论
+config.yaml 里面可以放置全局参数以及 menu 等信息，根据你所使用的主题文档进行修改即可。这里举个简单的例子，假如你希望你的网站遵循浏览器的亮暗偏好来加载，在 PaperMod 里就可以这样设置：
+
+```yaml
+params:
+  ... # 其他参数
+  defaultTheme: auto
+```
 
 ### 调试和发布
 
@@ -214,29 +221,42 @@ $$`
 
 概念上 Artalk 分为前后端以及存储所需要的数据库，先讲前端的配置，创建 layouts/partials/artalk.html，内容如下，因为我需要用到 katex，故而引入了其 css 和 js 相关的文件，读者应根据自己需要进行取舍
 
-末尾处有一个自动设置亮暗的代码，逻辑就是监听负责亮暗主题切换的按钮，从而进行自动亮暗，不同主题的 element id 势必会有些许不同，故而不可照抄~
+最重要的是根据浏览器的偏好以及读者对网站的偏好来设置亮暗，首先第一次加载时网站和 Artalk 会按照浏览器的偏好来加载。接着，如果读者点击了网站的「亮暗切换按钮」，那么以后的加载就遵循网站的亮暗偏好，而非浏览器的偏好。实现的逻辑大概就是通过一些 element 来获取当前的偏好，不同主题的 element id 势必会有些许不同，故而不可照抄~
 
 {{< collapse summary="artalk.html" >}}
 ```html
+<!-- Artalk Doc 默认是 unpkg 的 CDN，尽量不要用，国内连通性不好 -->
 <link
   rel="stylesheet"
-  href="https://unpkg.com/katex@0.16.7/dist/katex.min.css"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
 />
-<script src="https://unpkg.com/katex@0.16.7/dist/katex.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.8.6/Artalk.js"></script>
-<script src="https://unpkg.com/@artalk/plugin-katex@latest/dist/artalk-plugin-katex.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/artalk@2.8.6/dist/Artalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@artalk/plugin-katex@0.2.4/dist/artalk-plugin-katex.min.js"></script>
 
 <div id="Comments"></div>
 <script>
+  const savedTheme = localStorage.getItem("pref-theme");
+  let darkMode = "auto";
+  // 查看网站是否已经设置了亮暗偏好
+  if (savedTheme !== null) {
+    darkMode = savedTheme === "dark" ? true : false;
+  }
   const artalk = Artalk.init({
     el: "#Comments", // 绑定元素的 Selector
     pageKey: "",
     pageTitle: "{{ .Title }}",
     server: "{{ site.Params.artalk.server }}", // 后端地址
     site: "{{ site.Params.artalk.site }}", // 你的站点名
-    darkMode: "auto", // 首次打开时自动亮暗模式
-    versionCheck: false,  // 不提醒需要更新，还需要后端也设置，后端 > 前端
+    darkMode: darkMode, // 首次打开时自动亮暗模式
+    versionCheck: false, // 不提醒需要更新，还需要后端也设置，后端 > 前端
   });
   document.getElementById("theme-toggle").addEventListener("click", () => {
     document.body.className.includes("dark")
@@ -263,7 +283,7 @@ $$`
 emoticons: link_to_artalk.json
 ```
 
-关于此文件的具体格式，可以参考我的表情包[配置仓库](https://github.com/sherlcok314159/artalk-assets/blob/main/artalk.json)，至此，评论系统集成也已经完毕。当然，本网站的 artalk 看上去可能与你们的有些许不同，比如表情包的大小以及没有头像，我自己又改了一些 CSS 来完成上述目标，创建 assets/css/extended/artalk.css，将 artalk 对应的 [CSS](https://cdnjs.cloudflare.com/ajax/libs/artalk/2.9.1/Artalk.css) 内容复制进去，然后加入以下内容
+关于此文件的具体格式，可以参考我的表情包[配置仓库](https://github.com/sherlcok314159/artalk-assets/blob/main/artalk.json)，至此，评论系统集成也已经完毕。当然，本网站的 artalk 看上去可能与你们的有些许不同，比如表情包的大小以及没有头像，我自己又改了一些 CSS 来完成上述目标，创建 assets/css/extended/artalk.css，将 artalk 对应的 [CSS](https://cdnjs.cloudflare.com/ajax/libs/artalk/2.9.1/Artalk.css) 内容复制进去，然后修改为以下内容，如果没搜到对应的 CSS 项，就直接新建即可（关于字体的导入，在[字体设置](/posts/hugo-journey/#字体)）
 
 {{< collapse summary="Artalk css" >}}
 ```css
@@ -280,6 +300,24 @@ img[atk-emoticon] {
   border-radius: 3px;
   display: none; /* 移除头像 */
 }
+
+/* artalk 代码相关的字体与正文对齐 */
+.artalk code,
+.atk-layer-wrap code {
+  font-family: "Consolas", "LXGWWenKaiScreenR";
+  margin: 0 0.05em;
+  padding: 0 0.4em;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0.9em;
+  background-color: var(--at-color-bg-grey);
+  color: var(--at-color-font);
+  border-radius: 2px;
+}
+.artalk pre code *,
+.atk-layer-wrap pre code * {
+  font-family: "Consolas", "LXGWWenKaiScreenR";
+}
 ```
 {{< /collapse >}}
 
@@ -291,7 +329,7 @@ img[atk-emoticon] {
 
 ### 字体
 
-我对博客的字体向来是比较挑剔，而且这很影响读者的观感，我比较喜欢[霞鹜文楷](https://github.com/chawyehsu/lxgw-wenkai-webfont)，这款字体好看而且是开源的。不过该字体可不小，对于个人的轻量级 blog 来说，还是存在着优化的可能性，故而，我在博客上使用的是 woff2 格式文件，大小只有 2 M，直接放到了 static/fonts 目录，然后用 CSS 来控制网站整体的外观即可：
+我对博客的字体向来是比较挑剔，而且这很影响读者的观感，我比较喜欢[霞鹜文楷](https://github.com/chawyehsu/lxgw-wenkai-webfont)，这款字体好看而且是开源的。不过该字体可不小，对于个人的轻量级 blog 来说，还是存在着优化的可能性，故而，我在博客上使用的是 woff2 格式文件，大小只有 2 M，直接放到了 static/fonts 目录，有需要可以去我的仓库里下载。同时英文使用 Apple 的字体 SF Pro Text Regular 来渲染，然后用 CSS 来控制字体加载即可：
 
 {{< collapse summary="字体 CSS 设置" >}}
 ```css
@@ -300,18 +338,19 @@ img[atk-emoticon] {
   src: url("/fonts/lxgwwenkaiscreen.subset.v1.235.standard.woff2");
 }
 
+/* https://www.webfontfree.com/cn/download/SFProText-Regular */
+@font-face {
+  font-family: "SFProText-Regular";
+  src: url("/fonts/SFProText-Regular.woff2");
+}
+
 body {
-  font-family: "LXGWWenKaiScreenR", -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen,
-    Ubuntu, Cantarell, open sans, helvetica neue, sans-serif;
+  font-family: "SFProText-Regular", "LXGWWenKaiScreenR";
   font-size: 16px;
   line-height: 1.6;
   word-break: break-word;
   background: var(--theme);
   font-display: swap;
-}
-
-code {
-  font-family: "Consolas", "LXGWWenKaiScreenR";
 }
 ```
 {{< /collapse >}}
@@ -334,10 +373,19 @@ body.dark {
 }
 ```
 
-同时，需要修改亮暗模式下代码框的背景颜色，这里是直接用变量来进行替代
+同时，需要修改亮暗模式下代码框的背景颜色，这里是直接用变量来进行替代。然后关于代码的字体设置，笔者使用 Consolas 和霞鹜文楷（注释的中文字体）。为了防止有些读者并没有 Consolas 字体，这里保险起见还是下载下来。另外注意，因为我之前的 CSS 中加载了霞鹜文楷，如果你没有加载，还是需要多写一个 font-face
 
 {{< collapse summary="代码 CSS 设置" >}}
 ```css
+@font-face {
+  font-family: "Consolas";
+  src: url("/fonts/Consolas.woff2");
+}
+
+code {
+  font-family: "Consolas", "LXGWWenKaiScreenR";
+}
+
 .post-content code {
   margin: auto 4px;
   padding: 4px 6px;
@@ -355,13 +403,13 @@ body.dark {
   border-radius: var(--radius);
   overflow-x: auto;
   word-break: break-all;
-  font-family: "Consolas";
+  font-family: "Consolas", "LXGWWenKaiScreenR";
   font-size: 15px;
 }
 ```
 {{< /collapse >}}
 
-这两个变量进行设置的地方在 assets/css/core/theme-vars.css 这里：
+亮暗相关的两个变量进行设置的地方在 assets/css/core/theme-vars.css 这里：
 
 {{< collapse summary="theme-vars.css" >}}
 ```css
@@ -507,6 +555,8 @@ Mermaid js 可以可以让我们用代码的方式画流程图（如上图），
 
 同时支持亮暗自动切换，大部分代码片段取自于 [mermaid-js](https://github.com/mermaid-js/mermaid/issues/1945)社区的讨论，然而默认的代码是初次渲染是查看 localStorage 是否包含 pref-theme，很多时候用户并未手动点击切换是不会有这个值，即为 null。我这里是判断 `document.body.className` 是否包含 dark 来判断，更为准确
 
+mermaid 的字体设置依然是对齐正文，使用`mermaid.init()`设置即可：
+
 {{< collapse summary="mermaid.html 文件" >}}
 ```html
 {{ if .Page.Store.Get "hasMermaid" }}
@@ -515,7 +565,11 @@ Mermaid js 可以可以让我们用代码的方式画流程图（如上图），
   const elementCode = ".mermaid";
   const loadMermaid = function (theme) {
     mermaid.initialize({ theme });
-    mermaid.init({ theme }, document.querySelectorAll(elementCode));
+    mermaid.init({
+      theme,
+      themeVariables: { // 这里设置字体跟正文一致
+        fontFamily: ["SFProText-Regular", "LXGWWenKaiScreenR"]
+      }}, document.querySelectorAll(elementCode));
   };
   const saveOriginalData = function () {
     return new Promise((resolve, reject) => {

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Consolas";
+  src: url("/fonts/Consolas.woff2");
+}
+
 code {
   font-family: "Consolas", "LXGWWenKaiScreenR";
 }
@@ -19,6 +24,6 @@ code {
   border-radius: var(--radius);
   overflow-x: auto;
   word-break: break-all;
-  font-family: "Consolas";
+  font-family: "Consolas", "LXGWWenKaiScreenR";
   font-size: 15px;
 }

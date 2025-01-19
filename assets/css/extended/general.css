@@ -3,9 +3,14 @@
   src: url("/fonts/lxgwwenkaiscreen.subset.v1.235.standard.woff2");
 }
 
+/* https://www.webfontfree.com/cn/download/SFProText-Regular */
+@font-face {
+  font-family: "SFProText-Regular";
+  src: url("/fonts/SFProText-Regular.woff2");
+}
+
 body {
-  font-family: "LXGWWenKaiScreenR", -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen,
-    Ubuntu, Cantarell, open sans, helvetica neue, sans-serif;
+  font-family: "SFProText-Regular", "LXGWWenKaiScreenR";
   font-size: 16px;
   line-height: 1.6;
   word-break: break-word;

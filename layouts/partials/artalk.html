@@ -1,22 +1,35 @@
+<!-- Artalk Doc 默认是 unpkg，尽量不要用，国内连通性不好 -->
 <link
   rel="stylesheet"
-  href="https://unpkg.com/katex@0.16.7/dist/katex.min.css"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
 />
-<script src="https://unpkg.com/katex@0.16.7/dist/katex.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/artalk/2.8.6/Artalk.js"></script>
-<script src="https://unpkg.com/@artalk/plugin-katex@latest/dist/artalk-plugin-katex.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/artalk@2.8.6/dist/Artalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@artalk/plugin-katex@0.2.4/dist/artalk-plugin-katex.min.js"></script>
 
 <div id="Comments"></div>
 <script>
+  const savedTheme = localStorage.getItem("pref-theme");
+  let darkMode = "auto";
+  // 查看网站是否已经设置了亮暗偏好
+  if (savedTheme !== null) {
+    darkMode = savedTheme === "dark" ? true : false;
+  }
   const artalk = Artalk.init({
     el: "#Comments", // 绑定元素的 Selector
     pageKey: "",
     pageTitle: "{{ .Title }}",
     server: "{{ site.Params.artalk.server }}", // 后端地址
     site: "{{ site.Params.artalk.site }}", // 你的站点名
-    darkMode: "auto", // 首次打开时自动亮暗模式
-    versionCheck: false,  // 不提醒需要更新，还需要后端也设置，后端 > 前端
+    darkMode: darkMode, // 首次打开时自动亮暗模式
+    versionCheck: false, // 不提醒需要更新，还需要后端也设置，后端 > 前端
   });
   document.getElementById("theme-toggle").addEventListener("click", () => {
     document.body.className.includes("dark")
